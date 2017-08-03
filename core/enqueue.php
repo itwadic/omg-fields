@@ -13,7 +13,7 @@ function scripts() {
 function styles() {
   wp_enqueue_style(
 		'omg-fields-js',
-	    dirname( __FILE__ ) . "/dist/index.bundle.css",
+	  dirname( __FILE__ ) . "/dist/index.bundle.css",
 		array(),
 		OMG_FIELDS_VERSION
 	);

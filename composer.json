@@ -24,6 +24,6 @@
 	},
   "autoload": {
       "psr-0": { "Assetic": "src/" },
-      "files": [ "src/functions.php" ]
+      "files": [ "omg-fields.php" ]
   }
 }
