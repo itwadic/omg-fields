@@ -7,13 +7,13 @@ function setup() {
 }
 
 function scripts() {
-  wp_enqueue_script( 'omg-fields-js', OMG_FIELDS_URL . '/dist/index.bundle.js', array(), OMG_FIELDS_VERSION, true );
+  wp_enqueue_script( 'omg-fields-js', dirname( __FILE__ ) . '/dist/index.bundle.js', array(), OMG_FIELDS_VERSION, true );
 }
 
 function styles() {
   wp_enqueue_style(
 		'omg-fields-js',
-		OMG_FIELDS_URL . "/dist/index.bundle.css",
+	    dirname( __FILE__ ) . "/dist/index.bundle.css",
 		array(),
 		OMG_FIELDS_VERSION
 	);
