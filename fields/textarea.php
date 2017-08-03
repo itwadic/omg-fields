@@ -1,5 +1,5 @@
 <?php
-namespace Crossfield\Theme\Fields;
+namespace OMG\Fields;
 
 function register_textarea_field( $post, $name, $label ) {
 	ob_start();

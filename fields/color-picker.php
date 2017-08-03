@@ -1,5 +1,5 @@
 <?php
-namespace Crossfield\Theme\Fields;
+namespace OMG\Fields;
 
 function register_color_picker( $post, $name, $label, $default_color = '#10aded' ) {
 	$value = get_post_meta( $post->ID, $name, true );

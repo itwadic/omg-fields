@@ -1,0 +1,42 @@
+{
+  "name": "omg-fields",
+  "title": "OMG Fields",
+  "description": "A small fields API for WordPress",
+  "version": "0.1.0",
+  "homepage": "https://github.com/mrbobbybryant/omg-fields",
+  "scripts": {
+    "start": "webpack --config webpack.config.js",
+    "watch": "webpack --progress --colors --watch",
+    "build": "webpack --progress --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": {
+    "name": "Bobby Bryant",
+    "email": "bobby@developwithwp.com",
+    "url": "http://developwithwp.com"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-es2016": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "2.0.0-beta.4",
+    "file-loader": "^0.9.0",
+    "postcss": "^5.2.11",
+    "postcss-cssnext": "^2.9.0",
+    "postcss-import": "^9.1.0",
+    "postcss-loader": "^1.2.2",
+    "webpack": "beta"
+  },
+  "keywords": [],
+  "dependencies": {
+    "autoprefixer": "^6.7.7",
+    "postcss-nested": "^1.0.0",
+    "whatwg-fetch": "^2.0.3"
+  }
+}

@@ -1,5 +1,5 @@
 <?php
-namespace Crossfield\Theme\Fields;
+namespace OMG\Fields;
 
 function register_text_field( $post, $name, $label, $placeholder = '', $width = '100%' ) {
 	ob_start();
@@ -23,4 +23,3 @@ function register_text_field( $post, $name, $label, $placeholder = '', $width = 
 
 	<?php return ob_get_clean();
 }
-

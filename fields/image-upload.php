@@ -1,5 +1,5 @@
 <?php
-namespace Crossfield\Theme\Fields;
+namespace OMG\Fields;
 
 function custom_media_uploader( $image_id = 0, $field_name, $text ) {
 	$image_data = array();

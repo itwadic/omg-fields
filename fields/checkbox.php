@@ -1,5 +1,5 @@
 <?php
-namespace Crossfield\Theme\Fields;
+namespace OMG\Fields;
 
 function register_checkbox_buttons( $post, $name, $label, $option ) {
 	$value = get_post_meta( $post->ID, $name, true );

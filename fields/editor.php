@@ -1,5 +1,5 @@
 <?php
-namespace Crossfield\Theme\Fields;
+namespace OMG\Fields;
 
 function register_editor( $id ) {
 	$meta = get_post_meta( get_the_ID(), $id, true );
