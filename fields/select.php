@@ -1,11 +1,12 @@
 <?php
+namespace OMG\Fields;
 
-function register_select( $label, $slug, $description, $options, $show_empty = true ) {
+function register_select( $post, $slug, $label, $description, $options, $show_empty = true ) {
   $value = get_post_meta( $post->ID, $slug, true );
   ob_start(); ?>
 
   <div class="admin-row">
-        <label class="input__label" for="<?php echo esc_attr( IA\get_board_members_keys( 'category' ) ); ?>">
+        <label class="input__label" for="<?php echo esc_attr( $slug ); ?>">
             <?php echo esc_html( $label ); ?>
         </label>
         <div id="taxonomy-select" class="row-wrapper taxonomy-select">
