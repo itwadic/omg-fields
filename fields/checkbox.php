@@ -16,7 +16,7 @@ function register_checkbox_buttons( $post, $name, $label, $option ) {
 			<input
 				class="input__field_radio"
 				name="<?php echo esc_attr( $name ); ?>"
-				type="radio"
+				type="checkbox"
 				value="<?php echo esc_attr( $option ) ?>"
 				<?php checked( $value, $option ); ?> />
 		</div>
