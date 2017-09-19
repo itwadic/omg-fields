@@ -7,7 +7,7 @@
   "scripts": {
     "start": "webpack --config webpack.config.js",
     "watch": "webpack --progress --colors --watch",
-    "build": "webpack --progress --colors"
+    "build": "webpack -p --progress --colors"
   },
   "repository": {
     "type": "git",

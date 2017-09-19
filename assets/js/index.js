@@ -39,7 +39,7 @@ function imageUploads() {
 			event.preventDefault();
 			item.classList.toggle('has-image');
 			featuredImageTag.setAttribute('src', '');
-			featuredImageID.val('');
+			featuredImageID.value = '';
 		});
 
 		replaceImage.addEventListener('click', function(event) {

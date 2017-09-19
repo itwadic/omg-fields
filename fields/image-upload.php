@@ -1,38 +1,54 @@
 <?php
 namespace OMG\Fields;
 
-function custom_media_uploader( $image_id = 0, $field_name, $text ) {
-	$image_data = array();
-	$image_url = '';
-	if ( ! empty( $image_id ) ) {
-		$image_data = wp_get_attachment_image_src( $image_id, 'thumbnail' );
-		$image_url = set_custom_image_uploader_url( $image_data, $image_id );
-	}
+function custom_media_uploader( $post, $name, $label, $args ) {
+	$image_data = get_custom_image_uploader_url( $post, $name );
 
 	ob_start(); ?>
-	<div class="custom-media-upload<?php echo ( ! empty( $image_data[0] ) ) ? ' has-image' : ''; ?>">
-		<p id="<?php echo esc_attr( $field_name ); ?>-image-wrap" class="featured-image">
-				<span class="thumbnail-wrapper"><?php
+    <div class="admin-row">
+        <label class="input__label" for="<?php echo esc_attr( $name ); ?>">
+		    <?php esc_html_e( $label ) ?>
+        </label>
+        <div class="custom-media-upload <?php echo ( ! empty( $image_data[ 'url' ] ) ) ? ' has-image' : ''; ?>">
+            <div id="<?php echo esc_attr( $name ); ?>-image-wrap" class="featured-image">
+				<div class="thumbnail-wrapper"><?php
 					printf( '<a class="replace-image" title="%s" href="#"><img src="%s"></a>',
-						$text['replace_button'],
-						esc_url( $image_url )
+						$args['replace_button'],
+						esc_url( $image_data[ 'url' ])
 					); ?>
-				</span>
-			<a class="set-image <?php echo esc_attr( $text['link_type'] ); ?>" href="#"><?php echo $text['upload_button']; ?></a>
-			<a class="remove-image" href="#"><?php echo $text['remove_button']; ?></a>
+				</div>
+                <a class="set-image <?php echo esc_attr( $args['link_type'] ); ?>" href="#"><?php echo $args['upload_button']; ?></a>
+                <a class="remove-image <?php echo esc_attr( $args['link_type'] ); ?>" href="#"><?php echo $args['remove_button']; ?></a>
 
-			<input type="hidden" name="<?php echo esc_attr( $field_name ); ?>" value="<?php echo esc_attr( $image_id ); ?>">
-		</p>
-	</div>
+                <input type="hidden" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $image_data[ 'id' ] ); ?>">
+            </div>
+        </div>
+    </div>
+
 	<?php return ob_get_clean();
 }
 
-function set_custom_image_uploader_url( $image_data, $image_id ) {
-	if ( ! $image_data && ! $image_id ) {
-		return '';
-	} else if ( ! $image_data ) {
-		return esc_url( site_url( 'wp-includes/images/media/text.png' ) );
-	} else {
-		return $image_data[0];
-	}
+function get_custom_image_uploader_url( $post, $field_name ) {
+	$image_id = get_post_meta( $post->ID, $field_name, true );
+
+	if ( empty( $image_id ) ) {
+	    return [
+            'url'   =>  '',
+            'id'    =>  ''
+        ];
+    }
+
+    $image_url = wp_get_attachment_image_url( $image_id, 'thumbnail' );
+
+	if ( empty( $image_url ) ) {
+	    return [
+		    'url'   =>  site_url( 'wp-includes/images/media/text.png' ),
+		    'id'    =>  $image_id
+	    ];
+    }
+
+    return [
+	    'url'   =>  $image_url,
+	    'id'    =>  $image_id
+    ];
 }

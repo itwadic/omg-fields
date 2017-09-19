@@ -43,4 +43,18 @@
       justify-content: space-between;
     }
   }
+
+  & .custom-media-upload {
+    width: 80%;
+  }
+
+  & .remove-image {
+      display: none;
+  }
+}
+
+.custom-media-upload.has-image {
+    & .remove-image {
+        display: inline-block;
+    }
 }
