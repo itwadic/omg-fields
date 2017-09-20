@@ -13,6 +13,9 @@ function register_radio_buttons( $post, $name, $label, $options ) {
 			<?php esc_html_e( $label ); ?>
 		</label>
 		<div class="row-wrapper radio-buttons">
+		<?php if ( isset( $args['description'] ) && ! empty( $options['description'] ) ) : ?>
+                <p class="admin-row-description"><?php echo esc_html( $options['description'] ); ?></p>
+			<?php endif; ?>
 		<?php foreach ( $options as $option ) : ?>
 			<label class="input__radio_label">
 				<input

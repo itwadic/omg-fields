@@ -7,9 +7,12 @@ function custom_media_uploader( $post, $name, $label, $args ) {
 	ob_start(); ?>
     <div class="admin-row">
         <label class="input__label" for="<?php echo esc_attr( $name ); ?>">
-		    <?php esc_html_e( $label ) ?>
+		    <?php echo esc_html( $label ) ?>
         </label>
         <div class="custom-media-upload <?php echo ( ! empty( $image_data[ 'url' ] ) ) ? ' has-image' : ''; ?>">
+	        <?php if ( isset( $args['description'] ) && ! empty( $args['description'] ) ) : ?>
+                <p class="admin-row-description"><?php echo esc_html( $args['description'] ); ?></p>
+	        <?php endif; ?>
             <div id="<?php echo esc_attr( $name ); ?>-image-wrap" class="featured-image">
 				<div class="thumbnail-wrapper"><?php
 					printf( '<a class="replace-image" title="%s" href="#"><img src="%s"></a>',

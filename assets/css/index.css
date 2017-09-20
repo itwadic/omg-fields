@@ -6,16 +6,11 @@
 
   & label {
     width: 20%;
+    font-weight: 600;
   }
 
   & .row-wrapper {
     width: 80%;
-
-    &-description {
-      font-weight: 800;
-      font-style: italic;
-      margin-bottom: 3px;
-    }
   }
 
   & .textarea-wrapper {
@@ -53,7 +48,16 @@
   }
 }
 
+.admin-row-description {
+  font-style: italic;
+}
+
 .custom-media-upload.has-image {
+
+    & .thumbnail-wrapper {
+        margin-bottom: 0.875rem;
+    }
+
     & .remove-image {
         display: inline-block;
     }

@@ -1,7 +1,7 @@
 <?php
 namespace OMG\Fields;
 
-function register_textarea_field( $post, $name, $label ) {
+function register_textarea_field( $post, $name, $label, $args = [] ) {
 	ob_start();
 	?>
 	<div class="admin-row">
@@ -9,6 +9,9 @@ function register_textarea_field( $post, $name, $label ) {
 			<?php esc_html_e( $label ) ?>
 		</label>
 		<div class="textarea-wrapper">
+			<?php if ( isset( $args['description'] ) && ! empty( $args['description'] ) ) : ?>
+                <p class="admin-row-description"><?php echo esc_html( $args['description'] ); ?></p>
+			<?php endif; ?>
 			<textarea
 				class="input__field"
 				name="<?php echo esc_attr( $name ); ?>"

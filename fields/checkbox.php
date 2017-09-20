@@ -13,6 +13,9 @@ function register_checkbox_buttons( $post, $name, $label, $option ) {
 			<?php esc_html_e( $label ); ?>
 		</label>
 		<div class="autosuggest answer-status">
+			<?php if ( isset( $args['description'] ) && ! empty( $option['description'] ) ) : ?>
+                <p class="admin-row-description"><?php echo esc_html( $option['description'] ); ?></p>
+			<?php endif; ?>
 			<input
 				class="input__field_radio"
 				name="<?php echo esc_attr( $name ); ?>"
