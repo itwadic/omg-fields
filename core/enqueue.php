@@ -12,9 +12,16 @@ function scripts() {
 
 function styles() {
   wp_enqueue_style(
-  	'omg-fields-js',
-     OMG_FIELDS_URL . '/omg-fields/dist/index.bundle.css',
-     array(),
-	  OMG_FIELDS_VERSION
+		'omg-fields-css',
+		OMG_FIELDS_URL . '/omg-fields/dist/index.bundle.css',
+		array(),
+		OMG_FIELDS_VERSION
+	);
+
+	wp_enqueue_style(
+		'dragula-css',
+		OMG_FIELDS_URL . '/omg-fields/node_modules/dragula/dist/dragula.min.css',
+		array(),
+		OMG_FIELDS_VERSION
 	);
 }

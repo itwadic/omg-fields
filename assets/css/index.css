@@ -62,3 +62,25 @@
         display: inline-block;
     }
 }
+
+.text-list-wrapper {
+    display: flex;
+}
+
+.text-list-item {
+    display: flex;
+    align-items: center;
+    cursor: move;
+
+    & svg {
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+        cursor: pointer;
+        fill: #a00;
+
+        &:hover {
+            fill: #dc3232;
+        }
+    }
+}

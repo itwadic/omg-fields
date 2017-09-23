@@ -2,6 +2,8 @@
 namespace OMG\Fields;
 
 function register_text_field( $post, $name, $label, $args = [], $width = '100%' ) {
+	$placeholder = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
+	$values = get_list_values( $post, $name );
 	ob_start();
 	?>
 	<div class="admin-row">
@@ -15,7 +17,7 @@ function register_text_field( $post, $name, $label, $args = [], $width = '100%' 
 			<input
 				class="input__field"
 				name="<?php echo esc_attr( $name ); ?>"
-				placeholder="<?php echo esc_attr( $args[ 'placeholder' ] ); ?>"
+				placeholder="<?php echo esc_attr( $placeholder ); ?>"
 				type="text"
 				id="<?php echo esc_attr( $name ); ?>"
 				style="width: <?php echo esc_attr( $width ); ?>;"
