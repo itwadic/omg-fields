@@ -6,7 +6,7 @@ export default function( parent, args ) {
     const Hidden = serialInput( parent, args.hidden )
 
     registerDragEvents(list, Hidden, args.onDrag);
-    registerRemoveEvents(list, Hidden);
+    registerRemoveEvents(list, Hidden, args.onRemove);
 
     return {
         add: function(value) {
@@ -19,7 +19,7 @@ export default function( parent, args ) {
     }
 }
 
-const registerRemoveEvents = (list, Hidden) => {
+const registerRemoveEvents = (list, Hidden, onRemove) => {
     const listItems = list.querySelectorAll('li');
 
     list.addEventListener('click', (e) => {
@@ -29,7 +29,7 @@ const registerRemoveEvents = (list, Hidden) => {
             const listItem = e.target.closest('li');
             const value = listItem.querySelector('span').innerHTML;
             list.removeChild( listItem );
-            Hidden.remove(value);
+            Hidden.remove(value, onRemove);
         }
     });
 

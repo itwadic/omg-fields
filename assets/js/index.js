@@ -34,6 +34,9 @@ document.addEventListener( 'DOMContentLoaded', function() {
               const value = listItem.querySelector('span').innerHTML;
               return acc.concat([value]);
           }, [] );
+	  },
+	  onRemove: (currentValue, newValue) => {
+		  return currentValue.filter( (current) => current !== newValue );
 	  }
   });
 
@@ -52,6 +55,9 @@ document.addEventListener( 'DOMContentLoaded', function() {
 
               return acc.concat([value]);
           }, [] );
+	  },
+	  onRemove: (currentValue, newValue) => {
+		  return currentValue.filter( (current) => current.title !== newValue );
 	  }
   });
 } );
