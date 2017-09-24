@@ -13,7 +13,7 @@ namespace OMG\Fields;
  */
 function register_textlist_field( $post, $name, $label, $args = [], $width = '100%' ) {
 	$placeholder = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
-	$values = get_list_values( $post, $name );
+	$values = get_text_list_values( $post, $name );
 	ob_start();
 	?>
 	<div class="admin-row">
@@ -24,7 +24,7 @@ function register_textlist_field( $post, $name, $label, $args = [], $width = '10
 			<?php if ( isset( $args['description'] ) && ! empty( $args['description'] ) ) : ?>
 				<p class="admin-row-description"><?php echo esc_html( $args['description'] ); ?></p>
 			<?php endif; ?>
-			<?php echo build_list( $values ); ?>
+			<?php echo build_text_list( $values, 'text-list-list' ); ?>
             <div class="text-list-wrapper">
                 <input
                         class="input__field text-list-input"
@@ -47,38 +47,38 @@ function register_textlist_field( $post, $name, $label, $args = [], $width = '10
 	<?php return ob_get_clean();
 }
 
-function get_list_values( $post, $name ) {
+function update_text_list( $post_id, $values, $name, $sanitization_cb ) {
+	if ( empty( $values ) ) {
+		return false;
+	}
+
+	$values = json_decode( stripslashes( $values ) );
+
+	if ( ! is_array( $values ) ) {
+		return false;
+	}
+
+	$values = array_map( $sanitization_cb, $values );
+
+	update_post_meta( $post_id, $name, $values );
+}
+
+function get_text_list_values( $post, $name ) {
 	$values = get_post_meta( $post->ID, $name, true );
 	return ( ! empty( $values ) ) ? $values : [];
 }
 
-function build_list( $listItems ) {
+function build_text_list( $listItems, $class ) {
 	ob_start(); ?>
-	<ul class="text-list-list">
+    <ul class="<?php echo esc_attr( $class ); ?>">
 		<?php foreach( $listItems as $value ) : ?>
-			<li class=text-list-item data-id="<?php esc_attr( $value ); ?>">
-				<span><?php echo esc_html( $value ); ?></span>
+            <li class="text-list-item">
+                <span><?php echo esc_html( $value ); ?></span>
                 <svg viewBox="0 0 20 20">
                     <path d="M10 2c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8 3.58-8 8-8zM15 13l-3-3 3-3-2-2-3 3-3-3-2 2 3 3-3 3 2 2 3-3 3 3z"></path>
                 </svg>
-			</li>
+            </li>
 		<?php endforeach; ?>
-	</ul>
+    </ul>
 	<?php return ob_get_clean();
-}
-
-function update_list( $post_id, $values, $sanitization_cb ) {
-    if ( empty( $values ) ) {
-        return false;
-    }
-
-	$values = json_decode( stripslashes( $values ) );
-
-    if ( ! is_array( $values ) ) {
-        return false;
-    }
-
-	$values = array_map( $sanitization_cb, $values );
-
-	update_post_meta( $post_id, 'test-list-field', $values );
 }

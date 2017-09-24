@@ -1,11 +1,11 @@
-import serialInput from './serializeInput';
+import serialInput from './serialized-input';
 import dragula from 'dragula';
 
 export default function( parent, args ) {
     const list = parent.querySelector(args.list);
     const Hidden = serialInput( parent, args.hidden )
 
-    registerDragEvents(list, Hidden);
+    registerDragEvents(list, Hidden, args.onDrag);
     registerRemoveEvents(list, Hidden);
 
     return {
@@ -36,16 +36,13 @@ const registerRemoveEvents = (list, Hidden) => {
     return listItems;
 }
 
-const registerDragEvents = (list, Hidden) => {
+const registerDragEvents = (list, Hidden, callback) => {
     const drake = dragula([list]);
 
     drake.on('dragend', (el) => {
         const listItems = list.querySelectorAll('li');
 
-        const values = [].reduce.call( listItems, (acc, listItem) => {
-            const value = listItem.querySelector('span').innerHTML;
-            return acc.concat([value]);
-        }, [] );
+        const values = callback(list, listItems);
 
         Hidden.update(values);
     });

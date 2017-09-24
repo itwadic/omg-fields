@@ -8,6 +8,14 @@ function setup() {
 
 function scripts() {
   wp_enqueue_script( 'omg-fields-js', OMG_FIELDS_URL . '/omg-fields/dist/index.bundle.js', array(), OMG_FIELDS_VERSION, true );
+
+	wp_localize_script(
+		'omg-fields-js',
+		'OMGFields',
+		[
+			'baseURL'   =>  site_url()
+		]
+	);
 }
 
 function styles() {

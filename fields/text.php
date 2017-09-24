@@ -3,7 +3,7 @@ namespace OMG\Fields;
 
 function register_text_field( $post, $name, $label, $args = [], $width = '100%' ) {
 	$placeholder = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
-	$values = get_list_values( $post, $name );
+
 	ob_start();
 	?>
 	<div class="admin-row">
