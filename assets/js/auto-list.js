@@ -13,6 +13,7 @@ export default function( args ) {
     [].forEach.call( fields, ( autoList ) => {
         const input = autoList.querySelector( 'input[type=text]' );
         const List = list( autoList, args );
+        const spinner = input.nextElementSibling;
 
         let xhr = false;
 
@@ -21,6 +22,7 @@ export default function( args ) {
                 return false;
             }
 
+            spinner.classList.add('show');
             xhr = getOptions( xhr, updateOptions, input, endpoint );
 
         } );

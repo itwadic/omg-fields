@@ -18,6 +18,7 @@ export const onAutoSuggestInput = (e) => {
 }
 
 export const getOptions = ( xhr, callback, input, endpoint ) => {
+    const spinner = input.nextElementSibling;
     const query = buildQuery(input.value);
     const url = endpoint + query;
 
@@ -33,10 +34,10 @@ export const getOptions = ( xhr, callback, input, endpoint ) => {
 
     xhr.onreadystatechange = function() {
         if ( xhr.readyState === 4 && isJSON( xhr.responseText ) ) {
-            callback(false, { results: JSON.parse( xhr.responseText ), input: input } );
+            callback(false, { results: JSON.parse( xhr.responseText ), input: input, spinner: spinner } );
         } else {
             if ( xhr.responseText && isJSON( xhr.responseText ) ) {
-                callback( JSON.parse( xhr.responseText ), false );
+                callback( { message: JSON.parse( xhr.responseText ), spinner: spinner }, false );
             }
         }
     }
@@ -50,6 +51,7 @@ export const getOptions = ( xhr, callback, input, endpoint ) => {
     }, false);
 
     xhr.open('GET', url, true);
+
     xhr.send();
 
     return xhr;
@@ -67,6 +69,7 @@ export const updateOptions = ( error, response ) => {
             return false;
         }
 
+        error.spinner.classList.remove('show');
         console.warn( error );
     }
 
@@ -75,11 +78,11 @@ export const updateOptions = ( error, response ) => {
             return false;
         }
 
-        createOptions( response.results, response.input );
+        createOptions( response.results, response.input, response.spinner );
     }
 }
 
-const createOptions = ( results, input ) => {
+const createOptions = ( results, input, spinner ) => {
     const listName = input.getAttribute('list');
     const datalist = document.getElementById(listName);
 
@@ -88,6 +91,7 @@ const createOptions = ( results, input ) => {
         return acc.concat( option );
     }, '' );
 
+    spinner.classList.remove('show');
     datalist.innerHTML = newOptions;
 }
 

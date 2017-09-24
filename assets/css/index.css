@@ -84,3 +84,30 @@
         }
     }
 }
+
+.autosuggest-list-wrapper {
+    position: relative;
+
+    .autosuggest-spinner {
+        background: url('/wp-admin/images/spinner-2x.gif') no-repeat;
+        background-size: 16px 16px;
+        opacity: .7;
+        filter: alpha(opacity=70);
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        display: none;
+        visibility: hidden;
+    }
+
+    .autosuggest-spinner.show {
+        display: block;
+        visibility: visible;
+    }
+}
+
+.autosuggest-list-input {
+    padding-left: 30px;
+}

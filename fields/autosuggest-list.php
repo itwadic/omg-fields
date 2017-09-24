@@ -33,6 +33,7 @@ function register_autosuggest_list_field( $post, $name, $label, $args = [], $wid
 					style="width: <?php echo esc_attr( $width ); ?>;"
 					list="<?php echo esc_attr( $name ); ?>"
 				/>
+				<div class="autosuggest-spinner"></div>
 				<datalist id="<?php echo esc_attr( $name ); ?>"></datalist>
 				<input
 					class="input__field autosuggest-list-hidden"
