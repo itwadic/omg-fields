@@ -1,6 +1,7 @@
 import baseCss from '../css/index.css';
 import textList from './text-list';
 import autoList from './auto-list';
+import autoItem from './auto-item';
 import imageUploads from './image-uploads';
 
 const createTextItem = (value) => {
@@ -59,5 +60,11 @@ document.addEventListener( 'DOMContentLoaded', function() {
 	  onRemove: (currentValue, newValue) => {
 		  return currentValue.filter( (current) => current.title !== newValue );
 	  }
+  });
+
+  autoItem({
+	  parent: '.autosuggest',
+	  hidden: '.autosuggest-hidden',
+	  resource: 'posts'
   });
 } );

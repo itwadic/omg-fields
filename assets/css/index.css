@@ -85,7 +85,7 @@
     }
 }
 
-.autosuggest-list-wrapper {
+.autosuggest-list-wrapper, .autosuggest-wrapper {
     position: relative;
 
     .autosuggest-spinner {
@@ -108,6 +108,6 @@
     }
 }
 
-.autosuggest-list-input {
+.autosuggest-list-input, .autosuggest-input {
     padding-left: 30px;
 }
