@@ -1,12 +1,10 @@
-import serialInput from './serialized-input';
 import dragula from 'dragula';
 
 export default function( parent, args ) {
     const list = parent.querySelector(args.list);
-    const Hidden = serialInput( parent, args.hidden )
 
-    registerDragEvents(list, Hidden, args.onDrag);
-    registerRemoveEvents(list, Hidden, args.onRemove);
+    registerDragEvents(list, args.onDrag);
+    registerRemoveEvents(list, args.onRemove);
 
     return {
         add: function(value) {
@@ -14,12 +12,11 @@ export default function( parent, args ) {
             const listItem = document.createRange().createContextualFragment(html);
 
             list.appendChild( listItem );
-            Hidden.add(value);
         }
     }
 }
 
-const registerRemoveEvents = (list, Hidden, onRemove) => {
+const registerRemoveEvents = (list, onRemove) => {
     const listItems = list.querySelectorAll('li');
 
     list.addEventListener('click', (e) => {
@@ -29,21 +26,18 @@ const registerRemoveEvents = (list, Hidden, onRemove) => {
             const listItem = e.target.closest('li');
             const value = listItem.querySelector('span').innerHTML;
             list.removeChild( listItem );
-            Hidden.remove(value, onRemove);
+            onRemove( value );
         }
     });
 
     return listItems;
 }
 
-const registerDragEvents = (list, Hidden, callback) => {
+const registerDragEvents = (list, callback) => {
     const drake = dragula([list]);
 
     drake.on('dragend', (el) => {
         const listItems = list.querySelectorAll('li');
-
-        const values = callback(list, listItems);
-
-        Hidden.update(values);
+        callback(list, listItems);
     });
 }

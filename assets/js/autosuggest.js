@@ -1,4 +1,38 @@
-export const onAutoSuggestInput = (e) => {
+export default function( input, endpoint, onSelect, onEmpty ) {
+
+    const fields = document.querySelectorAll(input);
+
+    if ( ! fields ) {
+        return false;
+    }
+
+    [].forEach.call( fields, ( autosuggest ) => {
+        let xhr = false;
+
+        autosuggest.addEventListener( 'keyup', (e) => {
+            if ( 0 === e.target.value.length  && onEmpty) {
+                onEmpty();
+            }
+
+            if ( 3 > e.target.value.length ) {
+                return false;
+            }
+
+            autosuggest.classList.add('show');
+            xhr = getOptions( xhr, updateOptions, autosuggest, endpoint );
+
+        } );
+        autosuggest.addEventListener( 'input', (e) => {
+            const value = onAutoSuggestInput(e);
+
+            if ( value ) {
+                onSelect( value, autosuggest );
+            }
+        } );
+    } );
+}
+
+const onAutoSuggestInput = (e) => {
     const input = e.target;
     const inputValue = input.value;
     const listName = input.getAttribute('list');
@@ -17,8 +51,7 @@ export const onAutoSuggestInput = (e) => {
     return ( 0 === match.length ) ? false :  match[0];
 }
 
-export const getOptions = ( xhr, callback, input, endpoint ) => {
-    const spinner = input.nextElementSibling;
+const getOptions = ( xhr, callback, input, endpoint ) => {
     const query = buildQuery(input.value);
     const url = endpoint + query;
 
@@ -34,10 +67,10 @@ export const getOptions = ( xhr, callback, input, endpoint ) => {
 
     xhr.onreadystatechange = function() {
         if ( xhr.readyState === 4 && isJSON( xhr.responseText ) ) {
-            callback(false, { results: JSON.parse( xhr.responseText ), input: input, spinner: spinner } );
+            callback(false, { results: JSON.parse( xhr.responseText ), input: input } );
         } else {
             if ( xhr.responseText && isJSON( xhr.responseText ) ) {
-                callback( { message: JSON.parse( xhr.responseText ), spinner: spinner }, false );
+                callback( { message: JSON.parse( xhr.responseText ), input: input }, false );
             }
         }
     }
@@ -57,19 +90,14 @@ export const getOptions = ( xhr, callback, input, endpoint ) => {
     return xhr;
 }
 
-export const buildEndpoint = (args) => {
-    const data = Object.assign({ apiVersion: 'wp/v2', resource: 'posts' }, args);
-    return `${OMGFields.baseURL}/wp-json/${data.apiVersion}/${data.resource}?search=`;
-}
-
-export const updateOptions = ( error, response ) => {
+const updateOptions = ( error, response ) => {
     if ( error ) {
 
         if ( true === error ) {
             return false;
         }
 
-        error.spinner.classList.remove('show');
+        error.input.classList.remove('show');
         console.warn( error );
     }
 
@@ -78,11 +106,11 @@ export const updateOptions = ( error, response ) => {
             return false;
         }
 
-        createOptions( response.results, response.input, response.spinner );
+        createOptions( response.results, response.input );
     }
 }
 
-const createOptions = ( results, input, spinner ) => {
+const createOptions = ( results, input ) => {
     const listName = input.getAttribute('list');
     const datalist = document.getElementById(listName);
 
@@ -91,7 +119,7 @@ const createOptions = ( results, input, spinner ) => {
         return acc.concat( option );
     }, '' );
 
-    spinner.classList.remove('show');
+    input.classList.remove('show');
     datalist.innerHTML = newOptions;
 }
 

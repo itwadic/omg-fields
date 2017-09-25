@@ -1,6 +1,7 @@
 import baseCss from '../css/index.css';
 import textList from './text-list';
-import autoList from './auto-list';
+import autoList from './autosuggest-list';
+import list from './list';
 import autoItem from './auto-item';
 import imageUploads from './image-uploads';
 
@@ -29,42 +30,26 @@ document.addEventListener( 'DOMContentLoaded', function() {
 	  button: '.text-list-add',
 	  list: '.text-list-list',
 	  hidden: '.text-list-hidden',
-	  listTemplate: createTextItem,
-	  onDrag: (list, listItems) => {
-		  return [].reduce.call( listItems, (acc, listItem) => {
-              const value = listItem.querySelector('span').innerHTML;
-              return acc.concat([value]);
-          }, [] );
-	  },
-	  onRemove: (currentValue, newValue) => {
-		  return currentValue.filter( (current) => current !== newValue );
-	  }
+	  listTemplate: createTextItem
   });
 
   autoList({
-	  parent: '.autosuggest-list',
-	  list: '.autosuggest-list-list',
-	  hidden: '.autosuggest-list-hidden',
-	  listTemplate: createAutoSuggestItem,
-	  resource: 'posts',
-	  onDrag: (list, listItems) => {
-		  return [].reduce.call( listItems, (acc, listItem) => {
-              const value = {
-				  id: listItem.dataset.id,
-				  title: listItem.querySelector('span').innerHTML
-			  }
-
-              return acc.concat([value]);
-          }, [] );
-	  },
-	  onRemove: (currentValue, newValue) => {
-		  return currentValue.filter( (current) => current.title !== newValue );
-	  }
+   parent: '.autosuggest-list',
+   input: 'autosuggest-list-input',
+   list: '.autosuggest-list-list',
+   hidden: '.autosuggest-list-hidden',
+   listTemplate: createAutoSuggestItem,
+   endpoint: `${OMGFields.baseURL}/wp-json/wp/v2/posts?search=`
   });
 
   autoItem({
-	  parent: '.autosuggest',
+	  parent: '.autosuggest-wrapper',
+      input: '.autosuggest-input',
 	  hidden: '.autosuggest-hidden',
-	  resource: 'posts'
+	  endpoint: `${OMGFields.baseURL}/wp-json/wp/v2/posts?search=`
   });
+  //
+  // autoSuggest('.autosuggest-input', `${OMGFields.baseURL}/wp-json/wp/v2/posts?search=`, (value) => {
+  //  console.log(value);
+  // });
 } );

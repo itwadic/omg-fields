@@ -85,7 +85,7 @@ function build_autosuggest_list( $listItems, $class ) {
 	ob_start(); ?>
 	<ul class="<?php echo esc_attr( $class ); ?>">
 		<?php foreach( $listItems as $value ) : ?>
-			<li class=text-list-item data-id="<?php esc_attr( $value['id'] ); ?>">
+			<li class=text-list-item data-id="<?php echo esc_attr( $value['id'] ); ?>">
 				<span><?php echo esc_html( $value['title'] ); ?></span>
 				<svg viewBox="0 0 20 20">
 					<path d="M10 2c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8 3.58-8 8-8zM15 13l-3-3 3-3-2-2-3 3-3-3-2 2 3 3-3 3 2 2 3-3 3 3z"></path>
