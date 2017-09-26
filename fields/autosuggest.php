@@ -50,6 +50,11 @@ function register_autosuggest_field( $post, $name, $label, $args = [], $width = 
 
 function get_autosuggest_value( $post_id, $name ) {
 	$value_id = get_post_meta( $post_id, $name, true );
+
+	if ( empty( $value_id ) ) {
+	    return '';
+    }
+
 	$title = get_the_title( $value_id );
 
 	if ( empty( $title ) ) {
@@ -64,7 +69,7 @@ function get_autosuggest_value( $post_id, $name ) {
 
 function update_autosugggest( $post_id, $value, $name ) {
 	if ( empty( $value ) ) {
-		return false;
+		return update_post_meta( $post_id, $name, '' );
 	}
 
 	$value = json_decode( stripslashes( $value ) );
