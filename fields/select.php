@@ -1,11 +1,14 @@
 <?php
 namespace OMG\Fields;
 
-function register_select( $post, $slug, $label, $options, $args, $show_empty = true ) {
-  $value = get_post_meta( $post->ID, $slug, true );
-  ob_start(); ?>
+function register_select( $post, $slug, $label, $args, $show_empty = true ) {
+	if ( ! isset( $args['options'] ) ) {
+		throw new \Exception( 'The Select Field requires you to have an options key in the $args array.' );
+	}
 
-  <div class="admin-row">
+	$value = get_post_meta( $post->ID, $slug, true );
+	ob_start(); ?>
+    <div class="admin-row">
         <label class="input__label" for="<?php echo esc_attr( $slug ); ?>">
             <?php echo esc_html( $label ); ?>
         </label>
@@ -17,7 +20,7 @@ function register_select( $post, $slug, $label, $options, $args, $show_empty = t
                 <?php if ( true === $show_empty ) : ?>
                 <option value=""></option>
                 <?php endif; ?>
-                <?php foreach( $options as $option ) :?>
+                <?php foreach( $args['options'] as $option ) :?>
                     <option value="<?php echo esc_attr( $option[ 'id' ] ); ?>" <?php selected( $value, $option[ 'id' ] ); ?>>
                         <?php echo esc_html( $option[ 'name' ] ); ?>
                     </option>
@@ -26,5 +29,5 @@ function register_select( $post, $slug, $label, $options, $args, $show_empty = t
         </div>
     </div>
 
-  <?php return ob_get_clean();
+    <?php return ob_get_clean();
 }

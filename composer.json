@@ -1,14 +1,14 @@
 {
 	"name": "omg-fields",
 	"description": "A small fields API for WordPress",
-	"version": "0.1.0",
+	"version": "0.6.0",
 	"type": "wordpress-plugin",
 	"keywords": [],
 	"homepage": "https://github.com/mrbobbybryant/omg-fields",
 	"license": "GPL-2.0+",
 	"author": {
 		"name": "Bobby Bryant",
-		"email": "bobby@crossfield.com",
+		"email": "bobby@developwithwp.com",
 		"homepage": "Bobby Bryant",
 		"role": "Developer"
 	},

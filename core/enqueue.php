@@ -28,7 +28,7 @@ function styles() {
 
 	wp_enqueue_style(
 		'dragula-css',
-		OMG_FIELDS_URL . '/omg-fields/node_modules/dragula/dist/dragula.min.css',
+		'https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.css',
 		array(),
 		OMG_FIELDS_VERSION
 	);
