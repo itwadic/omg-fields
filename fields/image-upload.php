@@ -20,6 +20,11 @@ function custom_media_uploader( $post, $name, $label, $args ) {
 						esc_url( $image_data[ 'url' ])
 					); ?>
 				</div>
+                <?php if ( isset( $args['show_title'] ) && ! empty( $args['show_title'] ) ) : ?>
+                    <p class="thumbnail-title">
+	                    <?php echo basename( get_attached_file( $image_data[ 'id' ] ) ); ?>
+                    </p>
+                <?php endif; ?>
                 <a class="set-image <?php echo esc_attr( $args['link_type'] ); ?>" href="#"><?php echo $args['upload_button']; ?></a>
                 <a class="remove-image <?php echo esc_attr( $args['link_type'] ); ?>" href="#"><?php echo $args['remove_button']; ?></a>
 

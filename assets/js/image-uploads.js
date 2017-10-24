@@ -12,6 +12,7 @@ export default function imageUploads() {
 		var setImage = item.querySelector('.set-image');
 		var featuredImageTag = item.querySelector('a.replace-image img');
 		var featuredImageID = item.querySelector('input[type="hidden"]');
+		var featuredImageTitle = item.querySelector( '.thumbnail-title' );
 		var mediaFrame = wp.media({
 			title: 'Choose Media',
 			button: {
@@ -29,6 +30,10 @@ export default function imageUploads() {
 				featuredImageTag.setAttribute('src', attachment.sizes.thumbnail.url);
 			} else {
 				featuredImageTag.setAttribute('src', attachment.icon);
+			}
+
+			if ( featuredImageTitle ) {
+				featuredImageTitle.innerHTML = attachment.filename;
 			}
 
 		});
