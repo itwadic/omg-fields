@@ -19,11 +19,12 @@
 			"url"  : "https://wpackagist.org"
 		}
 	],
-	"require": {},
+	"require": {
+		"aaronholbrook/autoload": "dev-master"
+	},
     "require-dev": {
 	},
   "autoload": {
-      "psr-0": { "Assetic": "src/" },
       "files": [ "omg-fields.php" ]
   }
 }
