@@ -9,7 +9,7 @@ if ( !defined( 'OMG_FIELDS_FILE' ) ) {
 }
 
 if ( !defined( 'OMG_FIELDS_VERSION' ) ) {
-	define( 'OMG_FIELDS_VERSION', '0.7.1' );
+	define( 'OMG_FIELDS_VERSION', '0.8.0' );
 }
 
 require_once __DIR__ . '/core/autoload.php';
