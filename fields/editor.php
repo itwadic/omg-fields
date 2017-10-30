@@ -1,19 +1,18 @@
 <?php
 namespace OMG\Fields;
 
-function register_editor( $id ) {
+function register_editor( $id, $args = [] ) {
 	$meta = get_post_meta( get_the_ID(), $id, true );
-	if ( ! empty( $meta ) ) {
-		$value = $meta;
-	} else {
-		$value = '';
-	}
-	wp_editor(
-		wp_kses_post( $value ),
-		$id,
+	$value = ( ! empty( $meta ) ) ? $meta : '';
+	$args = wp_parse_args(
+		$args,
 		[
 			'editor_height' => 300,
 			'teeny' => false,
 			'media_buttons' => false,
-		] );
+		]
+	);
+
+	wp_editor(
+		wp_kses_post( $value ), $id, $args );
 }
