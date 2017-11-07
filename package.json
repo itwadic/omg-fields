@@ -6,7 +6,7 @@
   "homepage": "https://github.com/mrbobbybryant/omg-fields",
   "scripts": {
     "start": "webpack --config webpack.config.js",
-    "watch": "webpack --progress --colors --watch",
+    "watch": "webpack -d --watch",
     "build": "webpack -p --progress --colors"
   },
   "repository": {

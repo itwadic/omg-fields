@@ -2,6 +2,11 @@
 namespace OMG\Fields;
 
 function register_textarea_field( $post, $name, $label, $args = [] ) {
+	$value = get_post_meta( $post->ID, $name, true );
+	if ( isset( $args['callback'] ) && function_exists( $args['callback'] ) ) {
+		$value = call_user_func_array( $args['callback'], [ $value ] );
+	}
+
 	ob_start();
 	?>
 	<div class="admin-row">
@@ -18,7 +23,7 @@ function register_textarea_field( $post, $name, $label, $args = [] ) {
 				type="text"
 				id="<?php echo esc_attr( $name ); ?>"
 				style="height: 75px;"
-			><?php echo esc_textarea( get_post_meta( $post->ID, $name, true ) ); ?></textarea>
+			><?php echo esc_textarea( $value ); ?></textarea>
 		</div>
 	</div>
 

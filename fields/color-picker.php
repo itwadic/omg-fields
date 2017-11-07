@@ -4,6 +4,11 @@ namespace OMG\Fields;
 function register_color_picker( $post, $name, $label, $default_color = '#10aded', $args = [] ) {
 	$value = get_post_meta( $post->ID, $name, true );
 	$value = empty( $value ) ? $default_color : $value;
+
+	if ( isset( $args['callback'] ) && function_exists( $args['callback'] ) ) {
+		$value = call_user_func_array( $args['callback'], [ $value ] );
+	}
+
 	ob_start();
 	?>
 	<div class="admin-row">

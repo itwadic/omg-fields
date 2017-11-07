@@ -14,6 +14,11 @@ namespace OMG\Fields;
 function register_textlist_field( $post, $name, $label, $args = [], $width = '100%' ) {
 	$placeholder = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 	$values = get_text_list_values( $post, $name );
+
+	if ( isset( $args['callback'] ) && function_exists( $args['callback'] ) ) {
+		$values = call_user_func_array( $args['callback'], [ $values ] );
+	}
+
 	ob_start();
 	?>
 	<div class="admin-row">

@@ -7,6 +7,11 @@ function register_radio_buttons( $post, $name, $label, $args ) {
     }
 
 	$value = get_radio_value( $post, $name );
+
+	if ( isset( $args['callback'] ) && function_exists( $args['callback'] ) ) {
+		$value = call_user_func_array( $args['callback'], [ $value ] );
+	}
+
 	ob_start(); ?>
 
 	<div class="admin-row">

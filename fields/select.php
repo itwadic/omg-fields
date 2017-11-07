@@ -7,6 +7,11 @@ function register_select( $post, $slug, $label, $args, $show_empty = true ) {
 	}
 
 	$value = get_post_meta( $post->ID, $slug, true );
+
+	if ( isset( $args['callback'] ) && function_exists( $args['callback'] ) ) {
+		$value = call_user_func_array( $args['callback'], [ $value ] );
+	}
+
 	ob_start(); ?>
     <div class="admin-row">
         <label class="input__label" for="<?php echo esc_attr( $slug ); ?>">

@@ -3,6 +3,11 @@ namespace OMG\Fields;
 
 function register_text_field( $post, $name, $label, $args = [], $width = '100%' ) {
 	$placeholder = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
+	$value = get_post_meta( $post->ID, $name, true );
+
+	if ( isset( $args['callback'] ) && function_exists( $args['callback'] ) ) {
+		$value = call_user_func_array( $args['callback'], [ $value ] );
+	}
 
 	ob_start();
 	?>
@@ -21,7 +26,7 @@ function register_text_field( $post, $name, $label, $args = [], $width = '100%' 
 				type="text"
 				id="<?php echo esc_attr( $name ); ?>"
 				style="width: <?php echo esc_attr( $width ); ?>;"
-				value="<?php echo esc_attr( get_post_meta( $post->ID, $name, true ) ); ?>"
+				value="<?php echo esc_attr( $value ); ?>"
 			/>
 		</div>
 	</div>
