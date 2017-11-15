@@ -38,7 +38,7 @@ module.exports = {
             }
         ]
     },
-    devtool: 'source-map',
+    devtool: 'inline-source-map',
     plugins: [
         new ExtractTextPlugin({ filename: '[name].bundle.css', disable: false, allChunks: true })
     ]
