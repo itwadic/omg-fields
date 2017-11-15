@@ -28,9 +28,9 @@ function register_radio_buttons( $post, $name, $label, $args ) {
 					class="input__field_radio"
 					name="<?php echo esc_attr( $name ); ?>"
 					type="radio"
-					value="<?php echo esc_attr( $option['value'] ) ?>"
-					<?php checked( $value, $option['value'] ); ?> />
-				<span><?php echo esc_html( $option['label'] ); ?></span>
+					value="<?php echo esc_attr( $option['id'] ) ?>"
+					<?php checked( $value, $option['id'] ); ?> />
+				<span><?php echo esc_html( $option['name'] ); ?></span>
 			</label>
 
 		<?php endforeach;
