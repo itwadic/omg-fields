@@ -1,34 +1,30 @@
-export default function( input, endpoint, onSelect, onEmpty ) {
+export default function( autosuggest, endpoint, onSelect, onEmpty ) {
 
-    const fields = document.querySelectorAll(input);
-
-    if ( ! fields ) {
+    if ( ! autosuggest ) {
         return false;
     }
 
-    [].forEach.call( fields, ( autosuggest ) => {
-        let xhr = false;
+    let xhr = false;
 
-        autosuggest.addEventListener( 'keyup', (e) => {
-            if ( 0 === e.target.value.length  && onEmpty) {
-                onEmpty();
-            }
+    autosuggest.addEventListener( 'keyup', (e) => {
+        if ( 0 === e.target.value.length  && onEmpty) {
+            onEmpty();
+        }
 
-            if ( 3 > e.target.value.length ) {
-                return false;
-            }
+        if ( 3 > e.target.value.length ) {
+            return false;
+        }
 
-            autosuggest.classList.add('show');
-            xhr = getOptions( xhr, updateOptions, autosuggest, endpoint );
+        autosuggest.classList.add('show');
+        xhr = getOptions( xhr, updateOptions, autosuggest, endpoint );
 
-        } );
-        autosuggest.addEventListener( 'input', (e) => {
-            const value = onAutoSuggestInput(e);
+    } );
+    autosuggest.addEventListener( 'input', (e) => {
+        const value = onAutoSuggestInput(e);
 
-            if ( value ) {
-                onSelect( value, autosuggest );
-            }
-        } );
+        if ( value ) {
+            onSelect( value, autosuggest );
+        }
     } );
 }
 
