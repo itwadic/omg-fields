@@ -15,23 +15,20 @@ function register_checkbox_buttons( $post, $name, $label, $args ) {
 	ob_start(); ?>
 
 	<div class="admin-row">
-		<label class="input__label">
+		<label class="input__label" for="<?php echo esc_attr( $name ); ?>">
 			<?php esc_html_e( $label ); ?>
 		</label>
 		<div class="row-wrapper checkbox-buttons">
 			<?php if ( isset( $args['description'] ) && ! empty( $args['description'] ) ) : ?>
                 <p class="admin-row-description"><?php echo esc_html( $args['description'] ); ?></p>
 			<?php endif; ?>
-            <label class="input__label" for="<?php echo esc_attr( $name ); ?>">
-				<?php esc_html_e( $label ); ?>
-            </label>
 			<input
 				class="input__field_radio"
                 id="<?php echo esc_attr( $name ); ?>"
 				name="<?php echo esc_attr( $name ); ?>"
 				type="checkbox"
-				value="<?php echo esc_attr( $args['option'] ); ?>"
-				<?php checked( $value, $args['option'] ); ?> />
+				value="1"
+				<?php checked( $value, 1 ); ?> />
 		</div>
 	</div>
 
@@ -48,8 +45,10 @@ function get_checkbox_value( $post, $name ) {
 	return $value;
 }
 
-function update_chackbox_value( $post_id, $name, $value, $sanitization_cb ) {
-    if ( isset( $_POST[ $name ] ) ) {
-
+function update_checkbox_value( $post_id, $data, $name ) {
+    if ( ! isset( $data[ $name ] ) ) {
+	    update_post_meta( $post_id, $name, 0 );
+    } else {
+	    update_post_meta( $post_id, $name, 1 );
     }
 }
