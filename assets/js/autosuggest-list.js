@@ -16,8 +16,11 @@ export default function( args ) {
         const remove = removeItems( Hidden, onRemoveObject );
         const drag = dragItems( Hidden, onDragObject );
         const List = list( autoList, Object.assign( args, { onDrag: drag, onRemove: remove} ) );
+        const input = autoList.querySelector( '.autosuggest-list-input' );
+        const elName = `autoList_${input.getAttribute( 'list' )}`;
+        const endpoint = `${OMGFields.baseURL}/wp-json/wp/v2/${window[elName].resource}?search=`;
 
-        autoSuggest('.autosuggest-list-input', args.endpoint, (value, input) => {
+        autoSuggest( input, endpoint, (value, input) => {
             List.add(value);
             input.value = '';
             Hidden.add( value );

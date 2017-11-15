@@ -19,6 +19,16 @@ function register_autosuggest_list_field( $post, $name, $label, $args = [], $wid
 		$values = call_user_func_array( $args['callback'], [ $values ] );
 	}
 
+	$localized_key = sprintf( 'autoList_%s', $name );
+
+	wp_localize_script(
+		'omg-fields-js',
+		$localized_key,
+		[
+			'resource'  =>  isset( $args[ 'resource' ] ) ? $args[ 'resource' ] : 'posts'
+		]
+	);
+
 	ob_start();
 	?>
 	<div class="admin-row">

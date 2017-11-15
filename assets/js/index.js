@@ -38,18 +38,12 @@ document.addEventListener( 'DOMContentLoaded', function() {
    input: 'autosuggest-list-input',
    list: '.autosuggest-list-list',
    hidden: '.autosuggest-list-hidden',
-   listTemplate: createAutoSuggestItem,
-   endpoint: `${OMGFields.baseURL}/wp-json/wp/v2/posts?search=`
+   listTemplate: createAutoSuggestItem
   });
 
   autoItem({
 	  parent: '.autosuggest-wrapper',
       input: '.autosuggest-input',
-	  hidden: '.autosuggest-hidden',
-	  endpoint: `${OMGFields.baseURL}/wp-json/wp/v2/posts?search=`
+	  hidden: '.autosuggest-hidden'
   });
-  //
-  // autoSuggest('.autosuggest-input', `${OMGFields.baseURL}/wp-json/wp/v2/posts?search=`, (value) => {
-  //  console.log(value);
-  // });
 } );
