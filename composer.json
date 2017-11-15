@@ -1,7 +1,7 @@
 {
 	"name": "omg-fields",
 	"description": "A small fields API for WordPress",
-	"version": "0.8.0",
+	"version": "0.9.1",
 	"type": "wordpress-plugin",
 	"keywords": [],
 	"homepage": "https://github.com/mrbobbybryant/omg-fields",
