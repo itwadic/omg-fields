@@ -1,2 +1,118 @@
-.admin-row{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-bottom:25px}.admin-row label{width:20%;font-weight:600}.admin-row .row-wrapper,.admin-row .textarea-wrapper{width:80%}.admin-row .textarea-wrapper textarea{width:100%}.admin-row .taxonomy-select select{display:block;width:50%;margin-bottom:10px}.admin-row .taxonomy-select input[type=text]{width:70%}.admin-row .taxonomy-select .taxonomy-select-inputs{width:50%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.admin-row .custom-media-upload{width:80%}.admin-row .remove-image{display:none}.admin-row-description{font-style:italic}.custom-media-upload.has-image .thumbnail-wrapper{margin-bottom:.875rem}.custom-media-upload.has-image .remove-image{display:inline-block}.text-list-item,.text-list-wrapper{display:-webkit-box;display:-ms-flexbox;display:flex}.text-list-item{-webkit-box-align:center;-ms-flex-align:center;align-items:center;cursor:move}.text-list-item svg{width:20px;height:20px;margin-left:10px;cursor:pointer;fill:#72777c}.text-list-item svg:hover{fill:#dc3232}.autosuggest-list-wrapper,.autosuggest-wrapper{position:relative}.autosuggest-input,.autosuggest-list-input{padding-left:30px}.show{background:url("/wp-admin/images/spinner.gif") no-repeat 0}
+.admin-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 25px;
+}
+
+.admin-row label {
+  width: 20%;
+  font-weight: 600;
+}
+
+.admin-row input[readonly] {
+  background-color: #fff;
+}
+
+.admin-row .row-wrapper {
+  width: 80%;
+}
+
+.admin-row .textarea-wrapper {
+  width: 80%;
+}
+
+.admin-row .textarea-wrapper textarea {
+  width: 100%;
+}
+
+.admin-row .taxonomy-select select {
+  display: block;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.admin-row .taxonomy-select input[type=text] {
+  width: 70%;
+}
+
+.admin-row .taxonomy-select .taxonomy-select-inputs {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.admin-row .custom-media-upload {
+  width: 80%;
+}
+
+.admin-row .remove-image {
+  display: none;
+}
+
+.admin-row-description {
+  font-style: italic;
+}
+
+.custom-media-upload.has-image .thumbnail-wrapper {
+  margin-bottom: 0.875rem;
+}
+
+.custom-media-upload.has-image .remove-image {
+  display: inline-block;
+}
+
+.text-list-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.text-list-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    cursor: move;
+}
+
+.text-list-item svg {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  fill: #72777c;
+}
+
+.text-list-item svg:hover {
+  fill: #dc3232;
+}
+
+.autosuggest-list-wrapper, .autosuggest-wrapper {
+    position: relative;
+}
+
+.autosuggest-list-input, .autosuggest-input {
+    padding-left: 30px;
+}
+
+.show {
+   background:
+     url('/wp-admin/images/spinner.gif')
+     no-repeat
+     left center;
+}
+
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJpbmRleC5idW5kbGUuY3NzIiwic291cmNlUm9vdCI6IiJ9*/

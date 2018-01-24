@@ -9,6 +9,10 @@
     font-weight: 600;
   }
 
+  & input[readonly] {
+    background-color: #fff;
+  }
+
   & .row-wrapper {
     width: 80%;
   }

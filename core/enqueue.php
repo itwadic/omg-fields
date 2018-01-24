@@ -36,4 +36,11 @@ function styles() {
 		array(),
 		OMG_FIELDS_VERSION
 	);
+
+	wp_enqueue_style(
+		'flatpickr-css',
+		'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css',
+		array(),
+		OMG_FIELDS_VERSION
+	);
 }
