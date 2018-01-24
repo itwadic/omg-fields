@@ -5,6 +5,7 @@ import list from './list';
 import autoItem from './auto-item';
 import imageUploads from './image-uploads';
 import datepicker from './datepicker';
+import gallery from './gallery';
 
 const createTextItem = value => {
   return `<li class="text-list-item">
@@ -49,4 +50,5 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   datepicker();
+  gallery();
 });

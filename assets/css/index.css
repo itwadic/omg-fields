@@ -103,3 +103,39 @@
      no-repeat
      left center;
 }
+
+.gallery-images {
+  display: flex;
+}
+
+.remove-gallery-image {
+  width: 18px;
+  height: 18px;
+  fill: #72777c;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 50%;
+
+  &:hover {
+      fill: #dc3232;
+  }
+}
+
+.gallery-iamge-id {
+  visibility: hidden;
+  position: absolute;
+}
+
+.gallery-image {
+  width: 100%;
+}
+
+.gallery-image-item {
+  width: 25%;
+  display: block;
+  margin: 12px;
+  position: relative;
+}
