@@ -139,3 +139,7 @@
   margin: 12px;
   position: relative;
 }
+
+.table-list-item {
+  justify-content: space-between;
+}

@@ -58,3 +58,19 @@ export const onRemoveText = (currentValue, newValue) => {
 export const onRemoveImage = (currentValue, newValue) => {
   return currentValue.filter(current => current !== parseInt(newValue));
 };
+
+export const onDragTable = (list, listItems) => {
+  return [].reduce.call(
+    listItems,
+    (acc, listItem) => {
+      const key = listItem.querySelector('.table-list-key').innerHTML;
+      const value = listItem.querySelector('.table-list-value').innerHTML;
+      return acc.concat([{ key: key, value: value }]);
+    },
+    [],
+  );
+};
+
+export const onRemoveTable = (currentValue, newValue) => {
+  return currentValue.filter(current => current.key !== newValue);
+};
