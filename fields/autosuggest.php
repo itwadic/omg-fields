@@ -68,13 +68,21 @@ function get_autosuggest_value( $post_id, $name ) {
 	$value_id = get_post_meta( $post_id, $name, true );
 
 	if ( empty( $value_id ) ) {
-	    return '';
-    }
+		return '';
+	}
 
 	$title = get_the_title( $value_id );
 
 	if ( empty( $title ) ) {
-		return '';
+		$term = get_term( $value_id );
+
+		if ( $term ) {
+			$title = $term->name;
+		}
+	}
+
+	if ( empty( $title ) ) {
+		return false;
 	}
 
 	return [
