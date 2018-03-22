@@ -25,7 +25,8 @@ function register_autosuggest_field( $post, $name, $label, $args = [], $width = 
 		'omg-fields-js',
 		$localized_key,
 		[
-			'resource'  =>  isset( $args[ 'resource' ] ) ? $args[ 'resource' ] : 'posts'
+			'resource'  => isset( $args[ 'resource' ] ) ? $args[ 'resource' ] : 'posts',
+			'namespace' => isset( $args[ 'namespace' ] ) ? $args[ 'namespace' ] : 'wp/v2'
 		]
 	);
 
