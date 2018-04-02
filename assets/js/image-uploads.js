@@ -43,6 +43,10 @@ export default function imageUploads() {
 			item.classList.toggle('has-image');
 			featuredImageTag.setAttribute('src', '');
 			featuredImageID.value = '';
+
+			if ( featuredImageTitle ) {
+				featuredImageTitle.innerHTML = '';
+			}
 		});
 
 		replaceImage.addEventListener('click', function(event) {
