@@ -31,7 +31,8 @@
     "postcss-cssnext": "^2.9.0",
     "postcss-import": "^9.1.0",
     "postcss-loader": "^1.2.2",
-    "webpack": "3.10.0"
+    "webpack": "3.10.0",
+    "webpack-cli": "^2.0.12"
   },
   "keywords": [],
   "dependencies": {

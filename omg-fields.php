@@ -1,5 +1,9 @@
 <?php
 
+if ( !defined('ABSPATH') ) {
+	die();
+}
+
 if ( !defined( 'OMG_FIELDS_DIR' ) ) {
 	define( 'OMG_FIELDS_DIR', dirname( __FILE__ ) );
 }
@@ -9,12 +13,10 @@ if ( !defined( 'OMG_FIELDS_FILE' ) ) {
 }
 
 if ( !defined( 'OMG_FIELDS_VERSION' ) ) {
-	define( 'OMG_FIELDS_VERSION', '0.11.0' );
+	define( 'OMG_FIELDS_VERSION', '0.12.0' );
 }
 
-require_once __DIR__ . '/core/autoload.php';
-
-\OMG\Autoload\autoload( __DIR__. '/core' );
-\OMG\Autoload\autoload( __DIR__. '/fields' );
+\AaronHolbrook\Autoload\autoload( dirname( __FILE__ ) . '/core' );
+\AaronHolbrook\Autoload\autoload( dirname( __FILE__ ) . '/fields' );
 
 OMG\Fields\Core\setup();

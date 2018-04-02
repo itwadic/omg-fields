@@ -25,7 +25,8 @@ function register_autosuggest_field( $post, $name, $label, $args = [], $width = 
 		'omg-fields-js',
 		$localized_key,
 		[
-			'resource'  =>  isset( $args[ 'resource' ] ) ? $args[ 'resource' ] : 'posts'
+			'resource'  => isset( $args[ 'resource' ] ) ? $args[ 'resource' ] : 'posts',
+			'namespace' => isset( $args[ 'namespace' ] ) ? $args[ 'namespace' ] : 'wp/v2'
 		]
 	);
 
@@ -67,13 +68,21 @@ function get_autosuggest_value( $post_id, $name ) {
 	$value_id = get_post_meta( $post_id, $name, true );
 
 	if ( empty( $value_id ) ) {
-	    return '';
-    }
+		return '';
+	}
 
 	$title = get_the_title( $value_id );
 
 	if ( empty( $title ) ) {
-		return '';
+		$term = get_term( $value_id );
+
+		if ( $term ) {
+			$title = $term->name;
+		}
+	}
+
+	if ( empty( $title ) ) {
+		return false;
 	}
 
 	return [

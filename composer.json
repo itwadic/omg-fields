@@ -2,7 +2,7 @@
 	"name": "omg-fields",
 	"description": "A small fields API for WordPress",
 	"version": "0.11.0",
-	"type": "wordpress-plugin",
+	"type": "library",
 	"keywords": [],
 	"homepage": "https://github.com/mrbobbybryant/omg-fields",
 	"license": "GPL-2.0+",
