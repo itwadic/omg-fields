@@ -1,7 +1,7 @@
 <?php
 
 if ( !defined('ABSPATH') ) {
-	die();
+	return;
 }
 
 if ( !defined( 'OMG_FIELDS_DIR' ) ) {
@@ -13,7 +13,7 @@ if ( !defined( 'OMG_FIELDS_FILE' ) ) {
 }
 
 if ( !defined( 'OMG_FIELDS_VERSION' ) ) {
-	define( 'OMG_FIELDS_VERSION', '0.14.0' );
+	define( 'OMG_FIELDS_VERSION', '0.15.0' );
 }
 
 \AaronHolbrook\Autoload\autoload( dirname( __FILE__ ) . '/core' );

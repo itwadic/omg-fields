@@ -2,7 +2,7 @@
   "name": "omg-fields",
   "title": "OMG Fields",
   "description": "A small fields API for WordPress",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "homepage": "https://github.com/mrbobbybryant/omg-fields",
   "scripts": {
     "start": "webpack --config webpack.config.js",
