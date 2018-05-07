@@ -1,6 +1,10 @@
 <?php
 namespace OMG\Fields;
 
+if ( ! defined('ABSPATH') ) {
+	exit;
+}
+
 function register_text_field( $post, $name, $label, $args = [], $width = '100%' ) {
 	$placeholder = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 	$value = get_post_meta( $post->ID, $name, true );

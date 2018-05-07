@@ -1,6 +1,10 @@
 <?php
 namespace OMG\Fields;
 
+if ( ! defined('ABSPATH') ) {
+	exit;
+}
+
 /**
  * Function created a datepicker field.
  *

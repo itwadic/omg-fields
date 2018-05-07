@@ -1,6 +1,9 @@
 <?php
 namespace OMG\Fields;
 
+if ( ! defined('ABSPATH') ) {
+	exit;
+}
 
 function register_gallery( $post, $name, $label, $args = [] ) {
 	$images      = get_gallery_images( $post, $name );

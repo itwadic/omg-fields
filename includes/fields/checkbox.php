@@ -1,6 +1,10 @@
 <?php
 namespace OMG\Fields;
 
+if ( ! defined('ABSPATH') ) {
+	exit;
+}
+
 function register_checkbox_buttons( $post, $name, $label, $args ) {
 	if ( ! isset( $args['option'] ) ) {
 		throw new \Exception( 'The Checkbox Field requires you to have an option key in the $args array.' );

@@ -1,8 +1,7 @@
 {
 	"name": "omg-fields",
 	"description": "A small fields API for WordPress",
-	"version": "0.15.0",
-	"type": "library",
+	"type": "wordpress-plugin",
 	"keywords": [],
 	"homepage": "https://github.com/mrbobbybryant/omg-fields",
 	"license": "GPL-2.0+",
@@ -19,12 +18,6 @@
 			"url"  : "https://wpackagist.org"
 		}
 	],
-	"require": {
-		"aaronholbrook/autoload": "dev-master"
-	},
-    "require-dev": {
-	},
-  "autoload": {
-      "files": [ "omg-fields.php" ]
-  }
+	"require": {},
+    "require-dev": {}
 }

@@ -1,6 +1,10 @@
 <?php
 namespace OMG\Fields;
 
+if ( ! defined('ABSPATH') ) {
+	exit;
+}
+
 function register_radio_buttons( $post, $name, $label, $args ) {
     if ( ! isset( $args['options'] ) ) {
         throw new \Exception( 'The Radio Field requires you to have an options key in the $args array.' );

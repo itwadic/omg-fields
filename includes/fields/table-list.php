@@ -1,6 +1,10 @@
 <?php
 namespace OMG\Fields;
 
+if ( ! defined('ABSPATH') ) {
+	exit;
+}
+
 function register_specification_field( $post, $name, $label, $args = [], $width = '50%' ) {
 	$values = get_text_list_values( $post, $name );
 	ob_start(); ?>

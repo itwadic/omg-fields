@@ -1,7 +1,17 @@
 <?php
+/*
+Plugin Name:  OMG Fields
+Plugin URI:   https://github.com/mrbobbybryant/omg-fields
+Description:  A small fields API for WordPress.
+Version:      1.0.0
+Author:       Bobby Bryant
+Author URI:   https://github.com/mrbobbybryant
+License:      GPL2
+License URI:  https://www.gnu.org/licenses/gpl-2.0.html
+*/
 
-if ( !defined('ABSPATH') ) {
-	return;
+if ( ! defined('ABSPATH') ) {
+	exit;
 }
 
 if ( !defined( 'OMG_FIELDS_DIR' ) ) {
@@ -13,10 +23,9 @@ if ( !defined( 'OMG_FIELDS_FILE' ) ) {
 }
 
 if ( !defined( 'OMG_FIELDS_VERSION' ) ) {
-	define( 'OMG_FIELDS_VERSION', '0.15.0' );
+	define( 'OMG_FIELDS_VERSION', '1.0.0' );
 }
 
-\AaronHolbrook\Autoload\autoload( dirname( __FILE__ ) . '/core' );
-\AaronHolbrook\Autoload\autoload( dirname( __FILE__ ) . '/fields' );
+require_once 'includes/index.php';
 
 OMG\Fields\Core\setup();

@@ -1,6 +1,10 @@
 <?php
 namespace OMG\Fields;
 
+if ( ! defined('ABSPATH') ) {
+	exit;
+}
+
 function custom_media_uploader( $post, $name, $label, $args ) {
 	$image_data = get_custom_image_uploader_url( $post, $name );
 

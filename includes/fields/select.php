@@ -1,6 +1,10 @@
 <?php
 namespace OMG\Fields;
 
+if ( ! defined('ABSPATH') ) {
+	exit;
+}
+
 function register_select( $post, $slug, $label, $args, $show_empty = true ) {
 	if ( ! isset( $args['options'] ) ) {
 		throw new \Exception( 'The Select Field requires you to have an options key in the $args array.' );
