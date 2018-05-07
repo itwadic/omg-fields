@@ -13,7 +13,7 @@ if ( !defined( 'OMG_FIELDS_FILE' ) ) {
 }
 
 if ( !defined( 'OMG_FIELDS_VERSION' ) ) {
-	define( 'OMG_FIELDS_VERSION', '0.14.0' );
+	define( 'OMG_FIELDS_VERSION', '0.14.1' );
 }
 
 \AaronHolbrook\Autoload\autoload( dirname( __FILE__ ) . '/core' );
