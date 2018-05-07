@@ -9,34 +9,32 @@ function register_specification_field( $post, $name, $label, $args = [], $width 
 	$values = get_text_list_values( $post, $name );
 	ob_start(); ?>
 
-	<div class="admin-row">
-		<label class="input__label" for="<?php echo esc_attr( $name ); ?>">
-			<?php echo esc_html( $label ); ?>
-		</label>
-		<div class="row-wrapper table-list">
-			<?php if ( isset( $args['description'] ) && ! empty( $args['description'] ) ) : ?>
-				<p class="admin-row-description"><?php echo esc_html( $args['description'] ); ?></p>
-			<?php endif; ?>
-			<?php echo build_specification_list( $values, 'table-list-list' ); ?>
-			<div class="text-list-wrapper">
-				<input
-						class="input__field table-list-key"
-						type="text"
-						style="width: <?php echo esc_attr( $width ); ?>;"
-				/>
-				<input
-						class="input__field table-list-value"
-						type="text"
-						style="width: <?php echo esc_attr( $width ); ?>;"
-				/>
-				<button class="button button-primary table-list-add"><?php esc_html_e( 'Add', 'omg-fields' ); ?></button>
-				<input
-						class="input__field table-list-hidden"
-						name="<?php echo esc_attr( $name ); ?>"
-						type="hidden"
-						value="<?php echo esc_attr( wp_json_encode( $values ) ); ?>"
-				/>
-			</div>
+	<div class="row-wrapper table-list">
+		<?php if ( isset( $args['description'] ) && ! empty( $args['description'] ) ) : ?>
+			<p><?php echo esc_html( $args['description'] ); ?></p>
+		<?php endif; ?>
+		<?php echo build_specification_list( $values, 'table-list-list' ); ?>
+		<div class="text-list-wrapper">
+			<label for="<?php echo esc_attr( $name ); ?>">
+				<?php echo esc_html( $label ); ?>
+			</label>
+			<input
+					class="table-list-key"
+					type="text"
+					style="width: <?php echo esc_attr( $width ); ?>;"
+			/>
+			<input
+					class="table-list-value"
+					type="text"
+					style="width: <?php echo esc_attr( $width ); ?>;"
+			/>
+			<button class="button button-primary table-list-add"><?php esc_html_e( 'Add', 'omg-fields' ); ?></button>
+			<input
+					class="table-list-hidden"
+					name="<?php echo esc_attr( $name ); ?>"
+					type="hidden"
+					value="<?php echo esc_attr( wp_json_encode( $values ) ); ?>"
+			/>
 		</div>
 	</div>
 
@@ -78,13 +76,15 @@ function update_table_list( $post_id, $values, $name, $sanitization_cb ) {
 		update_post_meta( $post_id, $name, $values );
 	}
 
-	$values = json_decode( stripslashes( $values ) );
+	$values = json_decode( $values );
 
 	if ( ! is_array( $values ) ) {
 		return false;
 	}
 
-	$values = array_map( $sanitization_cb, $values );
+	if ( is_callable( $sanitization_cb ) ) {
+		$values = array_map( $sanitization_cb, $values );
+	}
 
 	update_post_meta( $post_id, $name, $values );
 }

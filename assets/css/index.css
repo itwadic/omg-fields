@@ -69,12 +69,21 @@
 
 .text-list-wrapper {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 40px;
 }
 
 .text-list-item {
     display: flex;
     align-items: center;
     cursor: move;
+    margin-bottom: 10px;
+
+    & span {
+      display: block;
+      width: 45%;
+    }
 
     & svg {
         width: 20px;
@@ -138,6 +147,19 @@
   display: block;
   margin: 12px;
   position: relative;
+}
+
+.table-list {
+  padding: 0 20px;
+
+  & input {
+    max-width: 220px;
+    height: 28px;
+  }
+
+  & label {
+    font-weight: bold;
+  }
 }
 
 .table-list-item {

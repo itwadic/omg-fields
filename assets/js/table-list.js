@@ -26,8 +26,9 @@ export default function() {
       listTemplate: tableItem,
     });
 
-    const key = tableList.querySelector('.table-list-key');
-    const value = tableList.querySelector('.table-list-value');
+    const wrapper = tableList.querySelector('.text-list-wrapper');
+    const key = wrapper.querySelector('.table-list-key');
+    const value = wrapper.querySelector('.table-list-value');
 
     addRow.addEventListener('click', event => {
       event.preventDefault();
