@@ -74,13 +74,15 @@ function update_table_list( $post_id, $values, $name, $sanitization_cb ) {
 		update_post_meta( $post_id, $name, $values );
 	}
 
-	$values = json_decode( stripslashes( $values ) );
+	$values = json_decode( $values );
 
 	if ( ! is_array( $values ) ) {
 		return false;
 	}
 
-	$values = array_map( $sanitization_cb, $values );
+	if ( is_callable( $sanitization_cb ) ) {
+		$values = array_map( $sanitization_cb, $values );
+	}
 
 	update_post_meta( $post_id, $name, $values );
 }
