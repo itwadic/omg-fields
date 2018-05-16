@@ -23,7 +23,7 @@ if ( !defined( 'OMG_FIELDS_FILE' ) ) {
 }
 
 if ( !defined( 'OMG_FIELDS_VERSION' ) ) {
-	define( 'OMG_FIELDS_VERSION', '1.0.0' );
+	define( 'OMG_FIELDS_VERSION', '1.0.1' );
 }
 
 require_once 'includes/index.php';
