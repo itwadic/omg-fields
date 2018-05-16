@@ -21,7 +21,7 @@ function scripts() {
 		'omg-fields-js',
 		'OMGFields',
 		[
-			'baseURL'   =>  site_url()
+			'baseURL' => home_url(),
 		]
 	);
 }
