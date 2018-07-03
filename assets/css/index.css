@@ -162,6 +162,27 @@
   }
 }
 
-.table-list-item {
+.table-list-header {
+  display: flex;
   justify-content: space-between;
+}
+
+.table-list-heading {
+  font-weight: bold;
+  width: 45%;
+  display: block;
+  margin-top: 40px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #eee;
+}
+
+.table-list-heading-spacer {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  display: block;
+}
+
+.table-list-header {
+  justify-content: flex-start;
 }

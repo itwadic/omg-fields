@@ -13,7 +13,7 @@ function register_specification_field( $post, $name, $label, $args = [], $width 
 		<?php if ( isset( $args['description'] ) && ! empty( $args['description'] ) ) : ?>
 			<p><?php echo esc_html( $args['description'] ); ?></p>
 		<?php endif; ?>
-		<?php echo build_specification_list( $values, 'table-list-list' ); ?>
+		<?php echo build_specification_list( $values, 'table-list-list', $args ); ?>
 		<div class="text-list-wrapper">
 			<label for="<?php echo esc_attr( $name ); ?>">
 				<?php echo esc_html( $label ); ?>
@@ -41,10 +41,21 @@ function register_specification_field( $post, $name, $label, $args = [], $width 
 	<?php
 }
 
-function build_specification_list( $list_items, $class ) {
+function build_specification_list( $list_items, $class, $args ) {
 	ob_start();
 	?>
 
+	<?php if ( isset( $args['headings'] ) && ! empty( $args['headings'] ) ) : ?>
+		<div class="table-list-header">
+			<span class="table-list-heading">
+				<?php echo esc_html( $args['headings']['column_one'] ); ?>
+			</span>
+			<span class="table-list-heading">
+				<?php echo esc_html( $args['headings']['column_two'] ); ?>
+			</span>
+			<span class="table-list-heading-spacer"></span>
+		</div>
+	<?php endif; ?>
 	<ul class="<?php echo esc_attr( $class ); ?>">
 		<?php foreach ( $list_items as $item ) : ?>
 			<li class="text-list-item table-list-item">
