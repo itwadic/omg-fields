@@ -3,7 +3,7 @@
 Plugin Name:  OMG Fields
 Plugin URI:   https://github.com/mrbobbybryant/omg-fields
 Description:  A small fields API for WordPress.
-Version:      1.0.0
+Version:      1.0.2
 Author:       Bobby Bryant
 Author URI:   https://github.com/mrbobbybryant
 License:      GPL2
@@ -23,7 +23,7 @@ if ( !defined( 'OMG_FIELDS_FILE' ) ) {
 }
 
 if ( !defined( 'OMG_FIELDS_VERSION' ) ) {
-	define( 'OMG_FIELDS_VERSION', '1.0.1' );
+	define( 'OMG_FIELDS_VERSION', '1.0.2' );
 }
 
 require_once 'includes/index.php';
