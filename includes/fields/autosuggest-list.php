@@ -16,8 +16,8 @@ if ( ! defined('ABSPATH') ) {
  * @return [string] Returns a string representing the HTML markup for this field.
  */
 function register_autosuggest_list_field( $post, $name, $label, $args = [], $width = '100%' ) {
-	$placeholder = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
-	$values = get_autosuggest_list_values( $post, $name );
+	$placeholder = ( isset( $args['placeholder'] ) ) ? $args['placeholder'] : '';
+	$values      = get_autosuggest_list_values( $post, $name );
 
 	if ( isset( $args['callback'] ) && function_exists( $args['callback'] ) ) {
 		$values = call_user_func_array( $args['callback'], [ $values ] );
@@ -29,7 +29,8 @@ function register_autosuggest_list_field( $post, $name, $label, $args = [], $wid
 		'omg-fields-js',
 		$localized_key,
 		[
-			'resource'  =>  isset( $args[ 'resource' ] ) ? $args[ 'resource' ] : 'posts'
+			'resource'  => isset( $args['resource'] ) ? $args['resource'] : 'posts',
+			'namespace' => isset( $args['namespace'] ) ? $args['namespace'] : 'wp/v2',
 		]
 	);
 

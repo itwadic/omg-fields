@@ -16,8 +16,8 @@ if ( ! defined('ABSPATH') ) {
  * @return [string] Returns a string representing the HTML markup for this field.
  */
 function register_autosuggest_field( $post, $name, $label, $args = [], $width = '100%' ) {
-	$placeholder = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
-	$value = get_autosuggest_value( $post->ID, $name );
+	$placeholder = ( isset( $args['placeholder'] ) ) ? $args['placeholder'] : '';
+	$value       = get_autosuggest_value( $post->ID, $name );
 
 	if ( isset( $args['callback'] ) && function_exists( $args['callback'] ) ) {
 		$value = call_user_func_array( $args['callback'], [ $value ] );
