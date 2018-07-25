@@ -108,7 +108,7 @@
 
 .show {
    background:
-     url('/wp-admin/images/spinner.gif')
+     url('/wp/wp-admin/images/spinner.gif')
      no-repeat
      left center;
 }
