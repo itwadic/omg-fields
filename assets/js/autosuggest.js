@@ -1,4 +1,5 @@
 export default function(autosuggest, endpoint, onSelect, onEmpty) {
+  let searchTerm;
   if (!autosuggest) {
     return false;
   }
@@ -7,12 +8,26 @@ export default function(autosuggest, endpoint, onSelect, onEmpty) {
 
   autosuggest.addEventListener('keyup', e => {
     if (0 === e.target.value.length && onEmpty) {
+      searchTerm = e.target.value;
       onEmpty();
     }
 
     if (3 > e.target.value.length) {
+      searchTerm = e.target.value;
       return false;
     }
+
+    if (e.target.value === searchTerm) {
+      const value = onAutoSuggestInput(e);
+
+      if (value) {
+        onSelect(value, autosuggest);
+      }
+
+      return false;
+    }
+
+    searchTerm = e.target.value;
 
     autosuggest.classList.add('show');
     xhr = getOptions(xhr, updateOptions, autosuggest, endpoint);
