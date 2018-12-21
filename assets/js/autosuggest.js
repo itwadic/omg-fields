@@ -66,7 +66,7 @@ const onAutoSuggestInput = e => {
 
 const getOptions = (xhr, callback, input, endpoint) => {
   const query = buildQuery(input.value);
-  const url = endpoint + query;
+  const url = endpoint + query + '&orderby=relevance';
 
   if (xhr) {
     xhr.abort();
