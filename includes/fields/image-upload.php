@@ -6,7 +6,11 @@ if ( ! defined('ABSPATH') ) {
 }
 
 function custom_media_uploader( $post, $name, $label, $args ) {
-	$image_data = get_custom_image_uploader_url( $post, $name );
+	$meta  = isset($args['meta']) ? $args['meta'] : false; 
+	if($meta)
+		$image_data = array("url"=>$post->$name,"id"=>$post->term_id);
+	else
+		$image_data = get_custom_image_uploader_url( $post, $name, $meta);
 
 	ob_start(); ?>
     <div class="admin-row">
@@ -40,8 +44,12 @@ function custom_media_uploader( $post, $name, $label, $args ) {
 	<?php return ob_get_clean();
 }
 
-function get_custom_image_uploader_url( $post, $field_name ) {
-	$image_id = get_post_meta( $post->ID, $field_name, true );
+function get_custom_image_uploader_url( $post, $field_name,$term = false ) {
+	//in case of term $post will have the whole $_POST object
+	if(!$term)
+		$image_id = get_post_meta( $post->ID, $field_name, true );
+	else
+		$image_id = isset($post[$field_name]) ? $post[$field_name] : '';
 
 	if ( empty( $image_id ) ) {
 	    return [
